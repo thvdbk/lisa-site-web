@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Home, Users, Building, Puzzle, Baby, Clock } from 'lucide-react'
 import { ATELIERS } from '@/lib/constants'
 
@@ -81,12 +82,12 @@ export default function Ateliers() {
                     {atelier.description}
                   </p>
                   {!atelier.comingSoon && (
-                    <a
-                      href="#contact"
+                    <Link
+                      href={`/ateliers#${atelier.id}`}
                       className="inline-block mt-4 text-sm font-medium text-orange-doux hover:underline"
                     >
                       En savoir plus →
-                    </a>
+                    </Link>
                   )}
                 </motion.div>
               )

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Phone, Mail } from 'lucide-react'
+import { Phone, Mail, Instagram, Linkedin } from 'lucide-react'
 import { SITE_CONFIG, NAV_LINKS } from '@/lib/constants'
 
 export default function Footer() {
@@ -69,6 +69,27 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+            {/* Réseaux sociaux */}
+            <div className="flex items-center gap-4 mt-4">
+              <a
+                href={SITE_CONFIG.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-creme/80 hover:text-vert-menthe transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href={SITE_CONFIG.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-creme/80 hover:text-vert-menthe transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+            </div>
           </div>
         </div>
 

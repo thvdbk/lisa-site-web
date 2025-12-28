@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
-import { Phone, Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { Phone, Mail, Send, CheckCircle, AlertCircle, Instagram, Linkedin } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/constants'
 
 type FormData = {
@@ -120,6 +120,33 @@ export default function Contact() {
                       </p>
                     </div>
                   </a>
+                </div>
+
+                {/* Réseaux sociaux */}
+                <div className="mt-8">
+                  <h4 className="font-medium text-marron-terre mb-4">
+                    Suivez-moi sur les réseaux
+                  </h4>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href={SITE_CONFIG.social.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-vert-feuillage/10 rounded-xl flex items-center justify-center hover:bg-vert-feuillage/20 transition-colors group"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="w-5 h-5 text-vert-feuillage" />
+                    </a>
+                    <a
+                      href={SITE_CONFIG.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-vert-feuillage/10 rounded-xl flex items-center justify-center hover:bg-vert-feuillage/20 transition-colors group"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="w-5 h-5 text-vert-feuillage" />
+                    </a>
+                  </div>
                 </div>
 
                 <div className="mt-10 pt-8 border-t border-marron-terre/10">
