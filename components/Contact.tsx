@@ -31,22 +31,12 @@ export default function Contact() {
     setStatus('loading')
 
     try {
-      // Using Web3Forms - free and unlimited
-      // You'll need to get an access key from https://web3forms.com/
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Replace with actual key
-          name: data.name,
-          email: data.email,
-          subject: data.subject,
-          message: data.message,
-          newsletter: data.subscribeNewsletter ? 'Oui' : 'Non',
-          to: SITE_CONFIG.contact.email,
-        }),
+        body: JSON.stringify(data),
       })
 
       if (response.ok) {
@@ -324,7 +314,7 @@ export default function Contact() {
                 {status === 'success' && (
                   <div className="flex items-center gap-2 text-vert-feuillage bg-vert-feuillage/10 px-4 py-3 rounded-xl">
                     <CheckCircle size={20} />
-                    <span>Message envoyé avec succès ! Je vous répondrai rapidement.</span>
+                    <span>Merci de m'avoir contacté, je reviens vers vous rapidement.</span>
                   </div>
                 )}
 

@@ -16,19 +16,12 @@ export default function Footer() {
     setNewsletterStatus('loading')
 
     try {
-      // Utilisation de Web3Forms pour la newsletter aussi
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Replace with actual key
-          email: email,
-          subject: 'Nouvelle inscription newsletter',
-          message: `Nouvelle inscription à la newsletter: ${email}`,
-          to: SITE_CONFIG.contact.email,
-        }),
+        body: JSON.stringify({ email }),
       })
 
       if (response.ok) {
