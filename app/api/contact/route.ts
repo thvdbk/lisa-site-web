@@ -5,11 +5,23 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { name, email, subject, message, acceptPrivacy, subscribeNewsletter } = body
 
+    console.log('[Contact API] Request received:', { name, email, subject })
+
     // Validation
     if (!name || !email || !subject || !message || !acceptPrivacy) {
+      console.log('[Contact API] Validation failed')
       return NextResponse.json(
         { error: 'Tous les champs requis doivent être remplis' },
         { status: 400 }
+      )
+    }
+
+    // Vérifier que la clé API existe
+    if (!process.env.BREVO_API_KEY) {
+      console.error('[Contact API] BREVO_API_KEY is not set')
+      return NextResponse.json(
+        { error: 'Configuration serveur manquante' },
+        { status: 500 }
       )
     }
 
@@ -59,12 +71,17 @@ export async function POST(request: NextRequest) {
 
     if (!brevoResponse.ok) {
       const errorData = await brevoResponse.json()
-      console.error('Brevo API error:', errorData)
+      console.error('[Contact API] Brevo API error:', {
+        status: brevoResponse.status,
+        error: errorData
+      })
       return NextResponse.json(
         { error: 'Erreur lors de l\'envoi du message' },
         { status: 500 }
       )
     }
+
+    console.log('[Contact API] Email sent successfully')
 
     // Si l'utilisateur veut s'abonner à la newsletter, l'ajouter aux contacts Brevo
     if (subscribeNewsletter) {
@@ -92,7 +109,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('Contact form error:', error)
+    console.error('[Contact API] Unexpected error:', error)
     return NextResponse.json(
       { error: 'Erreur lors de l\'envoi du message' },
       { status: 500 }
