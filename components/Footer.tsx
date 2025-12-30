@@ -16,7 +16,7 @@ export default function Footer() {
     setNewsletterStatus('loading')
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch('/api/newsletter/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
