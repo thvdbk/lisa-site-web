@@ -1,10 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { Home, Users, Building, Puzzle, Baby, ArrowLeft, Clock } from 'lucide-react'
 import { ATELIERS } from '@/lib/constants'
 import Link from 'next/link'
+import ImageCarousel from '@/components/ImageCarousel'
 
 const iconMap = {
   Home,
@@ -42,21 +42,83 @@ const colorClasses: Record<string, { bg: string; text: string; border: string }>
   },
 }
 
+function parseInlineMarkdown(text: string): React.ReactNode {
+  // Parse **bold** within text
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>
+    }
+    return part
+  })
+}
+
 function parseMarkdown(text: string) {
   return text
     .split('\n\n')
     .map((paragraph, i) => {
-      if (paragraph.startsWith('**') && paragraph.includes(':**')) {
-        const [title, ...rest] = paragraph.split(':**')
-        return (
-          <div key={i} className="mb-4">
-            <h4 className="font-semibold text-marron-terre mb-2">
-              {title.replace(/\*\*/g, '')} :
-            </h4>
-            <p className="text-marron-terre/80">{rest.join(':**')}</p>
-          </div>
-        )
+      const lines = paragraph.split('\n')
+
+      // Titre en gras suivi d'une liste (ex: **Pour qui ?**\n- item1\n- item2)
+      // ou (ex: **Ce que nous abordons :**\n- item1\n- item2)
+      if (paragraph.startsWith('**')) {
+        const titleLine = lines[0]
+        // Match **Titre** ou **Titre :** avec ou sans texte après
+        const titleMatch = titleLine.match(/^\*\*([^*]+)\*\*\s*(.*)$/)
+
+        if (titleMatch) {
+          const title = titleMatch[1].replace(/:$/, '').trim()
+          const afterTitle = titleMatch[2].trim()
+          const remainingLines = lines.slice(1)
+
+          // Si les lignes suivantes sont une liste
+          const listItems = remainingLines.filter(line => line.startsWith('- '))
+
+          if (listItems.length > 0) {
+            return (
+              <div key={i} className="mb-4">
+                <h4 className="font-semibold text-marron-terre mb-2">{title}</h4>
+                <ul className="list-disc list-inside space-y-1 text-marron-terre/80">
+                  {listItems.map((item, j) => (
+                    <li key={j}>{item.replace('- ', '')}</li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+
+          // Si les lignes suivantes sont aussi des titres en gras (ex: **Format :**\n**Public :**)
+          const boldLines = remainingLines.filter(line => line.startsWith('**'))
+          if (boldLines.length > 0 || afterTitle) {
+            // Traiter toutes les lignes comme des "label: valeur"
+            const allBoldLines = [titleLine, ...boldLines]
+            return (
+              <div key={i} className="mb-4 space-y-1">
+                {allBoldLines.map((line, j) => {
+                  const match = line.match(/^\*\*([^*]+)\*\*\s*(.*)$/)
+                  if (match) {
+                    const label = match[1].replace(/:$/, '').trim()
+                    const value = match[2].trim()
+                    return (
+                      <p key={j} className="text-marron-terre/80">
+                        <strong>{label} :</strong> {parseInlineMarkdown(value)}
+                      </p>
+                    )
+                  }
+                  return null
+                })}
+              </div>
+            )
+          }
+
+          // Titre seul sans liste ni texte après
+          return (
+            <h4 key={i} className="font-semibold text-marron-terre mb-2">{title}</h4>
+          )
+        }
       }
+
+      // Liste simple sans titre
       if (paragraph.startsWith('- ')) {
         const items = paragraph.split('\n').filter(line => line.startsWith('- '))
         return (
@@ -67,16 +129,20 @@ function parseMarkdown(text: string) {
           </ul>
         )
       }
-      if (paragraph.startsWith('*') && paragraph.endsWith('*')) {
+
+      // Texte italique (ex: *Service disponible prochainement*)
+      if (paragraph.startsWith('*') && paragraph.endsWith('*') && !paragraph.startsWith('**')) {
         return (
           <p key={i} className="italic text-marron-terre/60 mb-4">
-            {paragraph.replace(/\*/g, '')}
+            {paragraph.slice(1, -1)}
           </p>
         )
       }
+
+      // Paragraphe normal avec potentiellement du gras inline
       return (
         <p key={i} className="text-marron-terre/80 mb-4">
-          {paragraph}
+          {parseInlineMarkdown(paragraph)}
         </p>
       )
     })
@@ -127,29 +193,29 @@ export default function AteliersPage() {
                 className="scroll-mt-32"
               >
                 <div className={`grid lg:grid-cols-2 gap-12 items-center ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-                  {/* Image */}
+                  {/* Image Carousel */}
                   <div className={`relative ${!isEven ? 'lg:order-2' : ''}`}>
                     <div className={`aspect-[4/3] rounded-3xl overflow-hidden ${colors.bg}`}>
-                      {atelier.image ? (
-                        <div className="w-full h-full flex items-center justify-center">
-                          {/* Placeholder for image */}
-                          <div className="text-center p-8">
-                            <div className={`w-24 h-24 ${colors.bg} rounded-2xl mx-auto mb-4 flex items-center justify-center`}>
-                              {Icon && <Icon className={`w-12 h-12 ${colors.text}`} />}
+                      <ImageCarousel
+                        images={atelier.images}
+                        alt={atelier.title}
+                        colorClass={colors.bg}
+                        fallback={
+                          <div className="w-full h-full flex items-center justify-center">
+                            <div className="text-center p-8">
+                              <div className={`w-24 h-24 ${colors.bg} rounded-2xl mx-auto mb-4 flex items-center justify-center`}>
+                                {Icon && <Icon className={`w-12 h-12 ${colors.text}`} />}
+                              </div>
+                              <p className="text-marron-terre/60 text-sm">
+                                Photo à ajouter
+                              </p>
                             </div>
-                            <p className="text-marron-terre/60 text-sm">
-                              Photo à ajouter
-                            </p>
                           </div>
-                        </div>
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          {Icon && <Icon className={`w-24 h-24 ${colors.text}`} />}
-                        </div>
-                      )}
+                        }
+                      />
                     </div>
                     {atelier.comingSoon && (
-                      <div className="absolute top-4 right-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm text-vert-feuillage px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                      <div className="absolute top-4 right-4 flex items-center gap-2 bg-white/90 backdrop-blur-sm text-vert-feuillage px-4 py-2 rounded-full text-sm font-medium shadow-lg z-20">
                         <Clock size={16} />
                         Prochainement
                       </div>

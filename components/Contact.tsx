@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
+import Link from 'next/link'
 import { Phone, Mail, Send, CheckCircle, AlertCircle, Instagram, Linkedin } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/constants'
 
@@ -11,6 +12,8 @@ type FormData = {
   email: string
   subject: string
   message: string
+  acceptPrivacy: boolean
+  subscribeNewsletter: boolean
 }
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -41,6 +44,7 @@ export default function Contact() {
           email: data.email,
           subject: data.subject,
           message: data.message,
+          newsletter: data.subscribeNewsletter ? 'Oui' : 'Non',
           to: SITE_CONFIG.contact.email,
         }),
       })
@@ -154,7 +158,8 @@ export default function Contact() {
                     Zones d'intervention
                   </h4>
                   <p className="text-marron-terre/70 text-sm leading-relaxed">
-                    Interventions en présentiel dans la région et à distance
+                    Basée à <strong>{SITE_CONFIG.legal.basedIn}</strong>, j'interviens en présentiel
+                    en <strong>{SITE_CONFIG.legal.interventionZone}</strong> et à distance
                     (webinaires, consultations en visio) partout en France.
                   </p>
                 </div>
@@ -232,7 +237,7 @@ export default function Contact() {
                       focus:border-vert-feuillage focus:outline-none focus:ring-2 focus:ring-vert-feuillage/20`}
                   >
                     <option value="">Sélectionnez un sujet</option>
-                    <option value="atelier-eco-sante">Ateliers Éco-Santé</option>
+                    <option value="atelier-nesting">Ateliers Nesting</option>
                     <option value="conference">Conférence / Intervention</option>
                     <option value="projet-structure">Projet en structure</option>
                     <option value="fresque">Fresque Santé Environnementale</option>
@@ -262,6 +267,40 @@ export default function Contact() {
                   {errors.message && (
                     <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
                   )}
+                </div>
+
+                {/* Checkbox RGPD */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="acceptPrivacy"
+                      {...register('acceptPrivacy', { required: 'Vous devez accepter la politique de confidentialité' })}
+                      className="mt-1 w-4 h-4 text-vert-feuillage border-marron-terre/30 rounded focus:ring-vert-feuillage"
+                    />
+                    <label htmlFor="acceptPrivacy" className="text-sm text-marron-terre/70">
+                      J'accepte la{' '}
+                      <Link href="/politique-confidentialite" className="text-vert-feuillage hover:underline">
+                        politique de confidentialité
+                      </Link>{' '}
+                      et le traitement de mes données personnelles. *
+                    </label>
+                  </div>
+                  {errors.acceptPrivacy && (
+                    <p className="text-sm text-red-500">{errors.acceptPrivacy.message}</p>
+                  )}
+
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="subscribeNewsletter"
+                      {...register('subscribeNewsletter')}
+                      className="mt-1 w-4 h-4 text-vert-feuillage border-marron-terre/30 rounded focus:ring-vert-feuillage"
+                    />
+                    <label htmlFor="subscribeNewsletter" className="text-sm text-marron-terre/70">
+                      Je souhaite m'inscrire à la newsletter pour recevoir des conseils en santé environnementale et être informé(e) des prochains événements.
+                    </label>
+                  </div>
                 </div>
 
                 <button

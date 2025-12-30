@@ -15,6 +15,20 @@ export const SITE_CONFIG = {
     linkedin: 'https://www.linkedin.com/in/lisa-bonal',
   },
   domain: 'eco-inf.fr',
+  // Informations légales
+  legal: {
+    cooperative: 'KANOPE',
+    siret: '429 228 018 00041',
+    address: '68 rue Dessoles, 32000 Auch',
+    basedIn: 'Toulouse',
+    interventionZone: 'Occitanie',
+  },
+  // Hébergeur
+  hosting: {
+    name: 'o2switch',
+    address: 'Chem. des Pardiaux, 63000 Clermont-Ferrand',
+    website: 'https://www.o2switch.fr',
+  },
 }
 
 export const NAV_LINKS = [
@@ -28,14 +42,14 @@ export const NAV_LINKS = [
 
 export const ATELIERS = [
   {
-    id: 'eco-sante',
-    title: 'Ateliers Éco-Santé',
+    id: 'nesting',
+    title: 'Ateliers Nesting',
     subtitle: 'Pour un habitat plus sain',
     description: 'Accompagnement personnalisé pour créer un environnement domestique plus sain. Identifiez les sources de pollution intérieure et adoptez des alternatives plus sûres pour votre santé.',
-    longDescription: `Les ateliers Éco-Santé vous accompagnent dans la création d'un environnement domestique plus sain pour vous et votre famille.
+    longDescription: `Les ateliers Nesting vous accompagnent dans la création d'un environnement domestique plus sain pour vous et votre famille.
 
 **Ce que nous abordons :**
-- Identification des sources de pollution intérieure (produits ménagers, cosmétiques, matériaux)
+- Identification des sources de pollution intérieure (produits ménagers, cosmétiques, matériaux...)
 - Analyse de la qualité de l'air intérieur
 - Alternatives saines et accessibles pour le quotidien
 - Lecture et compréhension des étiquettes
@@ -45,7 +59,7 @@ export const ATELIERS = [
 **Public :** Particuliers, familles, futurs parents`,
     icon: 'Home',
     color: 'vert-feuillage',
-    image: '/images/ateliers/eco-sante.jpg',
+    images: ['/images/ateliers/atelier-nesting-sante-environnementale.jpg', '/images/ateliers/atelier-nesting-sante-environnementale-2.jpeg'],
   },
   {
     id: 'conferences',
@@ -57,7 +71,7 @@ export const ATELIERS = [
 **Types d'interventions :**
 - Conférences en entreprise ou collectivités
 - Webinaires interactifs
-- Interventions en milieu scolaire (primaire, collège, lycée)
+- Interventions en milieu scolaire (IFSI, IFAS, etc.)
 - Ateliers sur l'éco-anxiété et la gestion des émotions face au changement climatique
 
 **Thématiques abordées :**
@@ -66,20 +80,22 @@ export const ATELIERS = [
 - Qualité de l'air intérieur et extérieur
 - Alimentation et environnement
 - Éco-anxiété : comprendre et agir
+- Le respect de l'environnements dans la pratique du soin
 
 **Format :** De 1h à une demi-journée selon vos besoins`,
     icon: 'Users',
     color: 'vert-eau',
-    image: '/images/ateliers/conferences.jpg',
+    images: ['/images/ateliers/intervention-theatre-sante-environnementale.jpg','/images/ateliers/table-ronde-cocagne-alim-sante-environnementale.jpg','/images/ateliers/intervention-ifas-sante-environnementale.jpg', '/images/ateliers/intervention-ifas-cours-sante-environnementale.jpeg'],
   },
   {
-    id: 'projets-ov',
+    id: 'projets-structure',
     title: 'Projets en Structure',
     subtitle: 'Accompagnement sur mesure',
-    description: 'Mise en place de projets de santé environnementale au sein de votre organisation. Accompagnement sur mesure pour les établissements de santé et structures d\'accueil.',
+    description: 'Mise en place de projets de santé environnementale au sein de votre organisation. Accompagnement sur mesure pour les établissements de santé, structures d\'accueil, collectivités (exemple: Projets d\'ordonnances vertes).',
     longDescription: `Un accompagnement complet pour intégrer la santé environnementale au cœur de votre structure.
 
 **Pour qui ?**
+- Collectivité (Mairies, Mairies de Quartier)
 - Établissements de santé (hôpitaux, cliniques, EHPAD)
 - Structures petite enfance (crèches, MAM)
 - Établissements scolaires
@@ -91,11 +107,12 @@ export const ATELIERS = [
 - Mise en place d'un plan d'action concret
 - Suivi et évaluation des améliorations
 - Accompagnement vers des labels (crèche sans perturbateurs endocriniens, etc.)
+- Mise en place des Ordonnances Vertes au sein de votre collectivité
 
 **Format :** Projet sur plusieurs mois, adapté à vos contraintes`,
     icon: 'Building',
     color: 'orange-doux',
-    image: '/images/ateliers/projets-structure.jpg',
+    images: ['/images/ateliers/octobre-rose-forum-sante-environnementale.jpg'],
   },
   {
     id: 'fresque',
@@ -122,7 +139,7 @@ Inspirée de la Fresque du Climat, cette fresque permet de visualiser les mécan
 **Format :** 3h | **Participants :** 8 à 30 personnes`,
     icon: 'Puzzle',
     color: 'jaune-soleil',
-    image: '/images/ateliers/fresque.jpg',
+    images: ['/images/ateliers/fresque-sante-environnementale.jpeg'],
   },
   {
     id: 'consultations',
@@ -146,7 +163,7 @@ Les 1000 premiers jours de vie sont cruciaux pour le développement de l'enfant.
 *Service disponible prochainement*`,
     icon: 'Baby',
     color: 'vert-menthe',
-    image: '/images/ateliers/consultations.jpg',
+    images: ['/images/ateliers/consultations.jpg'],
     comingSoon: true,
   },
 ]
@@ -162,72 +179,144 @@ export type Evenement = {
   address?: string
   description: string
   registrationLink?: string // Lien d'inscription si ouvert au public
+  contact?: string // Contact personne / entité organisatrice (téléphone, email)
+  replayLink?: string // Lien vers le replay pour les événements passés
   isPublic: boolean // true si ouvert au public, false si privé
 }
 
 export const EVENEMENTS: Evenement[] = [
-  // Exemples d'événements - à personnaliser
   {
-    id: 'fresque-janvier-2025',
-    title: 'Fresque Santé Environnementale',
-    atelierType: 'fresque',
-    date: '2025-01-25',
-    startTime: '14:00',
-    endTime: '17:00',
-    location: 'La Maison des Associations',
-    address: '15 rue de la Santé, 75013 Paris',
-    description: 'Venez participer à un atelier collaboratif pour comprendre les liens entre notre environnement et notre santé. Places limitées à 20 participants.',
-    registrationLink: 'https://example.com/inscription',
-    isPublic: true,
-  },
-  {
-    id: 'webinaire-fevrier-2025',
-    title: 'Webinaire : Les perturbateurs endocriniens au quotidien',
-    atelierType: 'conferences',
-    date: '2025-02-15',
-    startTime: '18:30',
-    endTime: '20:00',
-    location: 'En ligne (Zoom)',
-    description: 'Un webinaire interactif pour apprendre à identifier et éviter les perturbateurs endocriniens dans notre quotidien. Gratuit et ouvert à tous.',
-    registrationLink: 'https://example.com/webinaire',
-    isPublic: true,
-  },
-  {
-    id: 'atelier-eco-sante-mars-2025',
-    title: 'Atelier Éco-Santé : Préparer l\'arrivée de bébé',
-    atelierType: 'eco-sante',
-    date: '2025-03-08',
+    id: 'nesting-auzeville-tolosane-fev-2026',
+    title: 'Atelier Nesting (Auzeville-Tolosane)',
+    atelierType: 'nesting',
+    date: '2026-02-14',
     startTime: '10:00',
-    endTime: '12:30',
-    location: 'Cabinet VieVent',
-    address: '25 avenue de la Nature, 69000 Lyon',
-    description: 'Atelier dédié aux futurs parents pour créer un environnement sain pour l\'arrivée de bébé. Chambre, produits de soin, alimentation : tout pour bien commencer.',
-    registrationLink: 'https://example.com/atelier-bebe',
+    endTime: '12:00',
+    location: 'Auzeville-Tolosane',
+    address: 'Auzeville-Tolosane',
+    description: 'Venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
+    contact: 'Inscription par téléphone : 05.61.73.53.10',
     isPublic: true,
   },
-  // Exemple d'événement passé
   {
-    id: 'conference-decembre-2024',
-    title: 'Conférence : Introduction à la santé environnementale',
-    atelierType: 'conferences',
-    date: '2024-12-10',
+    id: 'nesting-pechabou-jan-2026',
+    title: 'Atelier Nesting (Péchabou)',
+    atelierType: 'nesting',
+    date: '2026-01-15',
     startTime: '19:00',
     endTime: '21:00',
-    location: 'Médiathèque centrale',
-    address: '10 place du Livre, 69001 Lyon',
-    description: 'Une conférence pour découvrir les bases de la santé environnementale et comprendre son impact sur notre bien-être quotidien.',
+    location: 'Médiathèque de Pechabou',
+    address: "29 Avenue d'Occitanie, 31320 Péchabou",
+    description: 'Venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
+    contact: 'Inscription auprès du CCAS de Pechabou (06.70.59.67.31 ou par mail : ccas@mairie-pechabou.fr)',
     isPublic: true,
   },
-  // Exemple d'événement privé
   {
-    id: 'formation-entreprise-janvier-2025',
-    title: 'Formation en entreprise',
-    atelierType: 'projets-ov',
-    date: '2025-01-20',
+    id: 'nesting-lacroix-falgarde-jan-2026',
+    title: 'Atelier Nesting (Lacroix-Falgarde)',
+    atelierType: 'nesting',
+    date: '2026-01-10',
+    startTime: '10:00',
+    endTime: '12:00',
+    location: 'Lacroix-Falgarde',
+    address: 'Lacroix-Falgarde',
+    description: 'Venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
+    contact: 'Inscription par téléphone : 05.62.14.07.25',
+    isPublic: true,
+  },
+  {
+    id: 'nesting-cugnaux-jan-2026',
+    title: 'Atelier Nesting (Cugnaux)',
+    atelierType: 'nesting',
+    date: '2026-01-09',
+    startTime: '09:30',
+    endTime: '11:30',
+    location: 'Relais Parentalité',
+    address: 'Impasse Vincent Auriol, Cugnaux',
+    description: 'Venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
+    contact: 'Inscription auprès du CCAS de Cugnaux (tel: 0626292598)',
+    isPublic: true,
+  },
+  {
+    id: 'webinaire-decembre-2025',
+    title: 'Webinaire : Le microbiote',
+    atelierType: 'conferences',
+    date: '2025-12-19',
+    startTime: '13:00',
+    endTime: '14:00',
+    location: 'En ligne (Zoom)',
+    description: "Un webinaire interactif organisé par le SICOVAL pour découvrir le microbiote, son rôle essentiel pour la santé, et comprendre les risques qui s'y appliquent. Gratuit et ouvert à tous.",
+    isPublic: true,
+  },
+  {
+    id: 'journee-sante-envrionnement-cocagne-decembre-2025',
+    title: 'Journée santé environnement - Cocagne Alimentaire',
+    atelierType: 'conferences',
+    date: '2025-12-17',
     startTime: '09:00',
     endTime: '17:00',
-    location: 'Entreprise cliente',
-    description: 'Formation professionnelle sur la qualité de l\'air intérieur en milieu de travail.',
-    isPublic: false,
+    location: 'Fenouillet',
+    description: "Une journée organisée par Cocagne Alimentaire sur le thème: De la Production Agricole à l'assiette : Comment consilier santé du vivant, préservation des écosystèmes et justice sociale ? Table ronde, Visite des jardins, et Forum des Initiatives au Programme",
+    registrationLink: 'https://urls.fr/okwJlq', 
+    isPublic: true,
   },
+  {
+    id: 'intervention-ifas-decembre-2025',
+    title: 'Intervention en IFAS: Vers des pratiques de soin plus vertueuses',
+    atelierType: 'conferences',
+    date: '2025-12-02',
+    startTime: '09:00',
+    endTime: '12:00',
+    location: 'IFAS Lavaur',
+    description: 'Cours à l\'IFAS de Lavaur pour sensibiliser sur l\'importance de la mise en place de soins plus vertueux pour la santé et l\'environnement',
+    isPublic: true,
+  },
+  {
+    id: 'webinaire-perturbateur-endocrinien-novembre-2025',
+    title: 'Webinaire sur les Perturbateurs Endocriniens',
+    atelierType: 'conferences',
+    date: '2025-11-28',
+    startTime: '19:00',
+    endTime: '21:00',
+    location: 'En ligne (Zoom)',
+    replayLink: 'https://youtu.be/hnoi3fmrN30', // Replay
+    description: 'Un webinaire sur les perturbateurs endocriniens organisé par le PRSE4 SICOVAL : quels sont les enjeux et comment s\'en protéger ? Ouvert à tous',
+    isPublic: true,
+  },
+  {
+    id: 'webinaire-eco-anxiete-juin-2025',
+    title: 'Webinaire "Eco-Anxiété"',
+    atelierType: 'conferences',
+    date: '2025-06-12',
+    startTime: '19:00',
+    endTime: '21:00',
+    location: 'En ligne (Zoom)',
+    replayLink: 'https://www.youtube.com/watch?v=8HzD4wpBSRg', // Replay
+    description: 'Un webinaire sur la thématique "Eco-anxiété" organisé par le PRSE4 SICOVAL: « Comment transformer l\'anxiété en ressource ». Ouvert à tous',
+    isPublic: true,
+  },
+  {
+    id: 'webinaire-one-health-mars-2025',
+    title: 'Webinaire "One Health"',
+    atelierType: 'conferences',
+    date: '2025-03-14',
+    startTime: '19:00',
+    endTime: '21:00',
+    location: 'En ligne (Zoom)',
+    replayLink: 'https://www.youtube.com/watch?v=eA7rn6fPmJo', // Replay
+    description: 'Un webinaire sur la thématique "One Health" organisé par le PRSE4 SICOVAL: « Ensemble pour une santé globale, des écosystèmes à l\'humain ». Ouvert à tous',
+    isPublic: true,
+  },
+  {
+    id: 'cine-debat-contrepoisons-janv-2025',
+    title: 'Ciné-Débat "Contrepoisons, un combat citoyen',
+    atelierType: 'conferences',
+    date: '2025-01-16',
+    startTime: '20:00',
+    endTime: '22:00',
+    location: 'Cinéma Utopia Tournefeuille',
+    address: 'Impasse du Chateau, 31170 Tournefeuille',
+    description: 'Projection du film "Contrepoisons, un combat citoyen", en présence des réalisateursn de Laurence Huc, Toxicologue, Directrice de recherche INRAE/ INSERM / IRSET / LISIS & Professionnels de Santé',
+    isPublic: true,
+  }
 ]

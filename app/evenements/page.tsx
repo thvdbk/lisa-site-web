@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Clock, MapPin, ExternalLink, Users, Lock, Home, Building, Puzzle } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, MapPin, ExternalLink, Users, Lock, Home, Building, Puzzle, Phone, Play } from 'lucide-react'
 import { EVENEMENTS, ATELIERS, type Evenement } from '@/lib/constants'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -145,26 +145,50 @@ function EventCard({ event, isPast }: { event: Evenement; isPast: boolean }) {
             </div>
           </div>
 
-          {!isPast && event.isPublic && event.registrationLink && (
-            <a
-              href={event.registrationLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 btn-primary text-sm"
-            >
-              S'inscrire
-              <ExternalLink size={14} />
-            </a>
+          {/* Contact info pour inscription */}
+          {event.contact && (
+            <div className="flex items-start gap-2 text-sm text-marron-terre/70 mb-4">
+              <Phone size={16} className={`${colors.text} flex-shrink-0 mt-0.5`} />
+              <span>{event.contact}</span>
+            </div>
           )}
 
-          {!isPast && event.isPublic && !event.registrationLink && (
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 btn-primary text-sm"
-            >
-              Me contacter pour s'inscrire
-            </Link>
-          )}
+          {/* Boutons d'action */}
+          <div className="flex flex-wrap gap-3">
+            {!isPast && event.isPublic && event.registrationLink && (
+              <a
+                href={event.registrationLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 btn-primary text-sm"
+              >
+                S'inscrire
+                <ExternalLink size={14} />
+              </a>
+            )}
+
+            {!isPast && event.isPublic && !event.registrationLink && !event.contact && (
+              <Link
+                href="/#contact"
+                className="inline-flex items-center gap-2 btn-primary text-sm"
+              >
+                Me contacter pour s'inscrire
+              </Link>
+            )}
+
+            {/* Lien replay pour événements passés */}
+            {isPast && event.replayLink && (
+              <a
+                href={event.replayLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-orange-doux text-white px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-doux/90 transition-colors"
+              >
+                <Play size={14} />
+                Voir le replay
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.article>
@@ -245,11 +269,11 @@ export default function EvenementsPage() {
         </motion.div>
 
         {/* Events list */}
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div key={showPast ? 'past' : 'upcoming'} className="max-w-4xl mx-auto space-y-6">
           {displayedEvents.length > 0 ? (
             displayedEvents.map((event, index) => (
               <motion.div
-                key={event.id}
+                key={`${showPast ? 'past' : 'upcoming'}-${event.id}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}

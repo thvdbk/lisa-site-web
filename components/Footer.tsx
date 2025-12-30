@@ -1,14 +1,51 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
-import { Phone, Mail, Instagram, Linkedin } from 'lucide-react'
+import Link from 'next/link'
+import { Phone, Mail, Instagram, Linkedin, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import { SITE_CONFIG, NAV_LINKS } from '@/lib/constants'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const [email, setEmail] = useState('')
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setNewsletterStatus('loading')
+
+    try {
+      // Utilisation de Web3Forms pour la newsletter aussi
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Replace with actual key
+          email: email,
+          subject: 'Nouvelle inscription newsletter',
+          message: `Nouvelle inscription à la newsletter: ${email}`,
+          to: SITE_CONFIG.contact.email,
+        }),
+      })
+
+      if (response.ok) {
+        setNewsletterStatus('success')
+        setEmail('')
+      } else {
+        setNewsletterStatus('error')
+      }
+    } catch {
+      setNewsletterStatus('error')
+    }
+  }
 
   return (
     <footer className="bg-marron-terre text-creme">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div>
             <div className="mb-4">
@@ -23,6 +60,9 @@ export default function Footer() {
             <p className="text-creme/80 text-sm leading-relaxed">
               Accompagnement en santé environnementale pour un mode de vie plus sain et respectueux de votre santé.
             </p>
+            <p className="text-creme/60 text-xs mt-3">
+              Basée à {SITE_CONFIG.legal.basedIn}, interventions en {SITE_CONFIG.legal.interventionZone} et France entière.
+            </p>
           </div>
 
           {/* Navigation */}
@@ -33,12 +73,12 @@ export default function Footer() {
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-creme/80 hover:text-vert-menthe transition-colors text-sm"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -91,6 +131,58 @@ export default function Footer() {
               </a>
             </div>
           </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="font-serif text-lg font-bold mb-4 text-jaune-soleil">
+              Newsletter
+            </h3>
+            <p className="text-creme/80 text-sm mb-4">
+              Recevez des conseils en santé environnementale et les dates des prochains événements.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Votre email"
+                  required
+                  className="flex-1 px-3 py-2 rounded-lg bg-creme/10 border border-creme/20 text-creme placeholder:text-creme/50 text-sm focus:outline-none focus:border-vert-menthe"
+                />
+                <button
+                  type="submit"
+                  disabled={newsletterStatus === 'loading'}
+                  className="px-3 py-2 bg-vert-feuillage hover:bg-vert-eau text-white rounded-lg transition-colors disabled:opacity-50"
+                  aria-label="S'inscrire"
+                >
+                  {newsletterStatus === 'loading' ? (
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin block" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                </button>
+              </div>
+              {newsletterStatus === 'success' && (
+                <p className="flex items-center gap-1 text-vert-menthe text-xs">
+                  <CheckCircle size={14} />
+                  Inscription confirmée !
+                </p>
+              )}
+              {newsletterStatus === 'error' && (
+                <p className="flex items-center gap-1 text-orange-doux text-xs">
+                  <AlertCircle size={14} />
+                  Erreur, réessayez.
+                </p>
+              )}
+              <p className="text-creme/50 text-xs">
+                En vous inscrivant, vous acceptez notre{' '}
+                <Link href="/politique-confidentialite" className="underline hover:text-creme/80">
+                  politique de confidentialité
+                </Link>.
+              </p>
+            </form>
+          </div>
         </div>
 
         {/* Bottom Bar */}
@@ -98,12 +190,21 @@ export default function Footer() {
           <p className="text-creme/60 text-sm">
             © {currentYear} {SITE_CONFIG.brandName} - {SITE_CONFIG.ownerName}. Tous droits réservés.
           </p>
-          <a
-            href="#mentions-legales"
-            className="text-creme/60 hover:text-vert-menthe transition-colors text-sm"
-          >
-            Mentions légales
-          </a>
+          <div className="flex items-center gap-4 text-sm">
+            <Link
+              href="/mentions-legales"
+              className="text-creme/60 hover:text-vert-menthe transition-colors"
+            >
+              Mentions légales
+            </Link>
+            <span className="text-creme/40">|</span>
+            <Link
+              href="/politique-confidentialite"
+              className="text-creme/60 hover:text-vert-menthe transition-colors"
+            >
+              Politique de confidentialité
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
