@@ -138,7 +138,7 @@ export default function MentionsLegalesPage() {
           </div>
 
           <p className="text-sm text-marron-terre/50 mt-12">
-            Dernière mise à jour : Décembre 2024
+            Dernière mise à jour : Janvier 2026
           </p>
         </div>
       </div>

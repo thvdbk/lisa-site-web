@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { GraduationCap, Heart, Leaf, Users, School, Handshake } from 'lucide-react'
+import { GraduationCap, Heart, Leaf, Users, School, Handshake, Headphones } from 'lucide-react'
 
 const highlights = [
   {
@@ -98,7 +98,7 @@ export default function APropos() {
                 </p>
 
                 <p className="text-lg">
-                  Bonjour, moi c'est Lisa, créatrice de <strong className="text-vert-feuillage">Vie_Vent</strong>. Ici, on parle de santé et d'environnement, parce que les deux sont indissociables. Mon credo ? Prendre soin de soi, c'est aussi prendre soin de ce qui nous entoure.
+                  Hello, moi c'est Lisa, créatrice de <strong className="text-vert-feuillage">Vie_Vent</strong>. Ici, on parle de santé et d'environnement, parce que les deux sont indissociables. Mon credo ? Prendre soin de soi, c'est aussi prendre soin de ce qui nous entoure.
                 </p>
 
                 <p>
@@ -165,6 +165,27 @@ export default function APropos() {
                   <p className="text-marron-terre mb-0 italic">
                     <strong>Petite confidence :</strong> Mon engagement pour l'environnement ne date pas d'hier. Enfant, je me perdais dans les montagnes cantaliennes de mon village, où les vaches étaient plus nombreuses que les habitants. Aujourd'hui, c'est cette même connexion à la nature qui guide mon action.
                   </p>
+                </div>
+
+                {/* Podcast */}
+                <div className="bg-vert-eau/10 rounded-2xl p-6 my-6 flex items-center gap-4">
+                  <div className="w-12 h-12 bg-vert-feuillage/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Headphones className="w-6 h-6 text-vert-feuillage" />
+                  </div>
+                  <div>
+                    <p className="text-marron-terre mb-1">
+                      <strong>Envie d'en savoir plus sur mon parcours ?</strong>
+                    </p>
+                    <a
+                      href="https://podcast.ausha.co/e-vie-demment/rediff-l-ecologie-un-moyen-preventif-pour-ameliorer-la-sante-humaine-avec-lisa-bonal"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-vert-feuillage hover:text-vert-eau transition-colors font-medium inline-flex items-center gap-1"
+                    >
+                      Écoutez le podcast "L'écologie, un moyen préventif pour améliorer la santé humaine"
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
                 </div>
 
                 {/* Call to action */}

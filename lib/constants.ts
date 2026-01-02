@@ -25,9 +25,9 @@ export const SITE_CONFIG = {
   },
   // Hébergeur
   hosting: {
-    name: 'o2switch',
-    address: 'Chem. des Pardiaux, 63000 Clermont-Ferrand',
-    website: 'https://www.o2switch.fr',
+    name: 'Vercel Inc.',
+    address: '440 N Barranca Ave #4133, Covina, CA 91723, États-Unis',
+    website: 'https://vercel.com',
   },
 }
 

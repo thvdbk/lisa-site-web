@@ -180,7 +180,29 @@ export default function PolitiqueConfidentialitePage() {
 
             <section className="mb-10">
               <h2 className="font-serif text-2xl font-bold text-marron-terre mb-4">
-                9. Sécurité des données
+                9. Transfert de données hors UE
+              </h2>
+              <p>
+                Notre site est hébergé par Vercel Inc., dont les serveurs peuvent être situés aux États-Unis
+                ou dans d'autres pays hors de l'Union Européenne. Vercel adhère au Data Privacy Framework (DPF)
+                UE-États-Unis, garantissant un niveau de protection adéquat de vos données personnelles
+                conformément aux exigences du RGPD.
+              </p>
+              <p>
+                De même, notre service d'envoi d'emails (Brevo) peut traiter certaines données hors UE,
+                dans le respect des clauses contractuelles types approuvées par la Commission Européenne.
+              </p>
+              <p>
+                Pour plus d'informations, vous pouvez consulter la{' '}
+                <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-vert-feuillage hover:underline">
+                  politique de confidentialité de Vercel
+                </a>.
+              </p>
+            </section>
+
+            <section className="mb-10">
+              <h2 className="font-serif text-2xl font-bold text-marron-terre mb-4">
+                10. Sécurité des données
               </h2>
               <p>
                 Nous mettons en œuvre les mesures techniques et organisationnelles appropriées pour protéger
@@ -188,14 +210,14 @@ export default function PolitiqueConfidentialitePage() {
               </p>
               <ul>
                 <li>Connexion sécurisée (HTTPS)</li>
-                <li>Hébergement sur des serveurs sécurisés en France</li>
+                <li>Hébergement sur des serveurs sécurisés</li>
                 <li>Accès restreint aux données personnelles</li>
               </ul>
             </section>
 
             <section>
               <h2 className="font-serif text-2xl font-bold text-marron-terre mb-4">
-                10. Modification de la politique
+                11. Modification de la politique
               </h2>
               <p>
                 Cette politique de confidentialité peut être mise à jour à tout moment. La date de dernière
@@ -206,7 +228,7 @@ export default function PolitiqueConfidentialitePage() {
           </div>
 
           <p className="text-sm text-marron-terre/50 mt-12">
-            Dernière mise à jour : Décembre 2024
+            Dernière mise à jour : Janvier 2026
           </p>
         </div>
       </div>
