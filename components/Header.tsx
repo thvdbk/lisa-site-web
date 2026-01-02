@@ -29,7 +29,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-28">
           {/* Logo */}
-          <a href="#accueil" className="flex items-center gap-2 group">
+          <a href="#accueil" className="flex items-center gap-2 group flex-shrink-0">
             <Image
               src={SITE_CONFIG.logo}
               alt={`${SITE_CONFIG.brandName} - ${SITE_CONFIG.title}`}
@@ -41,12 +41,12 @@ export default function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8 mx-8">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-marron-terre hover:text-vert-feuillage transition-colors font-medium"
+                  className="text-marron-terre hover:text-vert-feuillage transition-colors font-medium whitespace-nowrap"
                 >
                   {link.label}
                 </a>
@@ -55,13 +55,13 @@ export default function Header() {
           </ul>
 
           {/* CTA Button Desktop */}
-          <a href="#contact" className="hidden md:block btn-primary">
+          <a href="#contact" className="hidden lg:block btn-primary whitespace-nowrap">
             Me contacter
           </a>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-marron-terre"
+            className="lg:hidden p-2 text-marron-terre"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           >
@@ -77,7 +77,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-creme border-t border-marron-terre/10"
+            className="lg:hidden bg-creme border-t border-marron-terre/10"
           >
             <ul className="container mx-auto px-4 py-4 space-y-2">
               {NAV_LINKS.map((link) => (

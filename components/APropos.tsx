@@ -1,23 +1,43 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { GraduationCap, Heart, Leaf } from 'lucide-react'
+import Image from 'next/image'
+import { GraduationCap, Heart, Leaf, Users, School, Handshake } from 'lucide-react'
 
 const highlights = [
   {
     icon: GraduationCap,
-    title: 'Infirmière diplômée',
-    description: '6 ans d\'expérience, spécialisée en santé environnementale',
+    title: 'Éco-Infirmière',
+    description: 'Expertise en santé environnementale et prévention primaire',
   },
   {
     icon: Heart,
-    title: 'Passionnée par le vivant',
-    description: 'Comprendre les liens entre santé humaine, animale et environnementale',
+    title: 'Membre AMLP',
+    description: 'Engagement pour les ordonnances vertes et la santé environnementale',
   },
   {
     icon: Leaf,
-    title: 'Éco-infirmière',
-    description: 'Sensibiliser, accompagner et montrer que des alternatives existent',
+    title: 'Approche globale',
+    description: 'Santé humaine, animale et environnementale sont indissociables',
+  },
+]
+
+const offerings = [
+  {
+    icon: Users,
+    text: 'Accompagnements personnalisés (consultations, ateliers)',
+  },
+  {
+    icon: School,
+    text: 'Interventions en école pour former les soignants de demain',
+  },
+  {
+    icon: Leaf,
+    text: 'Ressources claires pour passer à l\'action',
+  },
+  {
+    icon: Handshake,
+    text: 'Collaboration avec des partenaires engagés',
   },
 ]
 
@@ -50,17 +70,13 @@ export default function APropos() {
               className="lg:col-span-2 relative"
             >
               <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-vert-feuillage/20 to-vert-menthe/20 overflow-hidden sticky top-28">
-                {/* Placeholder for Lisa's photo */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-32 h-32 bg-vert-feuillage/30 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <span className="text-4xl font-serif text-vert-feuillage">LB</span>
-                    </div>
-                    <p className="text-marron-terre/60 text-sm">
-                      Photo de Lisa à ajouter
-                    </p>
-                  </div>
-                </div>
+                <Image
+                  src="/images/photo_lisa_vie_vent.jpg"
+                  alt="Lisa Bonal - Éco-Infirmière et créatrice de Vie_Vent"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
               </div>
               {/* Decorative elements */}
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-jaune-soleil/30 rounded-2xl -z-10" />
@@ -76,72 +92,99 @@ export default function APropos() {
               className="lg:col-span-3"
             >
               <div className="prose prose-lg max-w-none text-marron-terre/80 leading-relaxed space-y-4 mb-10">
-                <p className="text-xl font-medium text-marron-terre">
-                  Je m'appelle Lisa, j'ai 27 ans. Je n'ai pas d'enfants, ni toutes mes dents mais j'aimerais bien contribuer à un avenir plus vertueux pour montrer la beauté de ce monde.
+                {/* Citation d'accroche */}
+                <p className="text-xl font-serif italic text-vert-feuillage text-center py-2">
+                  "Prendre soin du vivant, du corps à la planète."
+                </p>
+
+                <p className="text-lg">
+                  Bonjour, moi c'est Lisa, créatrice de <strong className="text-vert-feuillage">Vie_Vent</strong>. Ici, on parle de santé et d'environnement, parce que les deux sont indissociables. Mon credo ? Prendre soin de soi, c'est aussi prendre soin de ce qui nous entoure.
                 </p>
 
                 <p>
-                  En parlant de vertueux, j'adore le <span className="text-vert-feuillage font-medium">vert</span>, c'est ma couleur préférée. Peut-être parce que le vert me fait penser à la nature, aux végétaux, au calme.
+                  Mon parcours ? Un peu atypique, un mélange d'expériences qui m'ont menée à une évidence : <strong>la prévention est la meilleure des médecines</strong>. Infirmière aux urgences pédiatriques pendant trois ans, j'ai vu les limites du système de santé : le manque de temps, les déchets médicaux à usage unique, et des enfants de plus en plus touchés par des problèmes de santé.
                 </p>
-
-                <p>
-                  Parfois je suis un peu vert(e) de rage à l'idée que ce monde change et qu'hier ne sera plus comme demain. Vous aussi ? Vous souffrez peut-être de <em>solastalgie</em> mais pas de panique, ce n'est pas une maladie, par contre elle est contagieuse.
-                </p>
-
-                <div className="bg-vert-feuillage/5 rounded-2xl p-6 my-6">
-                  <h3 className="font-serif text-xl font-bold text-marron-terre mb-3">
-                    Retour vers le passé...
-                  </h3>
-                  <p className="mb-3">
-                    Il y a 6 ans, me voilà avec mon diplôme d'infirmière en poche, youhou je vais pouvoir sauver le monde, enfin c'est ce que je pensais… C'est ce que je pensais avant d'attaquer mes études car très vite, j'ai déchanté et je me suis aperçue que ce métier dont je rêvais, était tout simplement un rêve et pas la réalité.
-                  </p>
-                  <p className="mb-3">
-                    La réalité, c'était le manque de temps, le nombre trop important de patients pour 1 seule personne, des soins curatifs, toujours plus de soins curatifs, des heures supplémentaires, pas de reconnaissance de la part de la hiérarchie et des journées à rallonges.
-                  </p>
-                  <p>
-                    La réalité c'était un impact sur l'environnement, des tonnes de plastiques à usage unique jetés, des flacons ouverts encore remplis jetés, de la nourriture gaspillée, des patients de plus en plus malades, de plus en plus jeunes.
-                  </p>
-                </div>
 
                 <p className="text-lg font-medium text-vert-feuillage">
-                  J'ai donc pris ma vie en main.
+                  Un constat qui m'a poussée à agir autrement.
                 </p>
 
                 <p>
-                  Des remises en questions, des réflexions, puis une formation sur la santé environnementale. Oui, enfin, j'avais trouvé quelque chose qui m'animait ! Comprendre les liens entre santé et environnement, voilà ce que je recherchais.
+                  C'est là que j'ai découvert la <strong>santé environnementale</strong>. Une révélation ! Enfin, des réponses à mes questions : <em>Pourquoi tant de maladies respiratoires en ville ? Pourquoi des enfants de plus en plus jeunes touchés par des problèmes de santé ?</em> J'ai compris que la clé, c'était d'agir à la source.
                 </p>
 
                 <p>
-                  Mon attrait pour l'environnement a toujours été là. Petite, j'errais dans mon village accueillant plus de vaches que d'habitants, je randonnais les week-ends arpentant les montagnes cantaliennes, écoutant les bruits de la nature.
+                  Aujourd'hui, je suis <strong className="text-vert-feuillage">Éco-Infirmière</strong> et je mets mon expertise au service de la santé globale. Mon objectif ? Vous donner les clés pour réduire votre exposition aux polluants du quotidien et adopter des gestes simples, mais impactants. Parce que oui, <strong>savoir, c'est pouvoir</strong>.
                 </p>
+
+                {/* Engagements */}
+                <div className="bg-vert-feuillage/5 rounded-2xl p-6 my-6">
+                  <h3 className="font-serif text-xl font-bold text-marron-terre mb-4">
+                    Mes engagements concrets
+                  </h3>
+                  <ul className="space-y-4 list-none pl-0">
+                    <li className="flex gap-3">
+                      <span className="text-vert-feuillage mt-1">•</span>
+                      <span>
+                        <strong>Membre active de l'association AMLP</strong> (Alerte Médicale sur les Pesticides et les Perturbateurs Endocriniens) : je fais partie du groupe qui travaille sur les <strong>ordonnances vertes</strong>, pour intégrer la santé environnementale dans les pratiques médicales.
+                      </span>
+                    </li>
+                    <li className="flex gap-3">
+                      <span className="text-vert-feuillage mt-1">•</span>
+                      <span>
+                        <strong>Infirmière en MECS</strong> (Maison d'Enfants à Caractère Social) : dans le cadre de la protection de l'enfance, j'y mets en place des <strong>ateliers sur la santé environnementale</strong> et des actions concrètes. Par exemple, nous avons remplacé <strong>toutes les barquettes en plastique</strong> par de l'<strong>inox</strong> pour les repas. Pourquoi ? Pour éviter les déchets, mais surtout pour limiter l'exposition des enfants et des professionnel·les aux <strong>perturbateurs endocriniens</strong> présents dans le plastique.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Pourquoi Vie_Vent */}
+                <h3 className="font-serif text-xl font-bold text-marron-terre mt-8 mb-3">
+                  Pourquoi Vie_Vent ?
+                </h3>
 
                 <p>
-                  Mais un constat me faisait revenir à la réalité. Le monde change, les températures augmentent impactant des conditions de vie dignes pour l'avenir, pourquoi dans une grande ville comme Paris, les enfants souffraient autant de maladies respiratoires ?
+                  Parce que tout est lié : santé humaine, animale et environnementale. Mon approche ? <strong>La prévention primaire</strong> : agir avant que la maladie n'arrive, en s'appuyant sur des données scientifiques vulgarisées et des solutions réalistes.
                 </p>
 
-                <p className="text-center text-xl font-serif text-marron-terre py-4">
-                  Pourquoi ? Pourquoi ? Pourquoi ?<br />
-                  <span className="text-base">Je devais comprendre…</span>
+                <p className="font-medium text-marron-terre">
+                  Avec Vie_Vent, je vous propose :
                 </p>
 
-                <p>
-                  Et me voilà 6 ans après, fière de me présenter en tant qu'<strong className="text-vert-feuillage">éco-infirmière</strong>. Éco, pour environnement, écologie. Ma formation m'a permis d'en apprendre davantage sur le vivant, la nature, nos expositions quotidiennes avec des polluants et surtout de comprendre pourquoi nous tombions malade.
-                </p>
+                <ul className="grid sm:grid-cols-2 gap-3 list-none pl-0 my-4">
+                  {offerings.map((item) => (
+                    <li key={item.text} className="flex items-start gap-2 bg-white rounded-lg p-3 shadow-sm border border-marron-terre/10">
+                      <item.icon className="w-5 h-5 text-vert-feuillage flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <p>
-                  Maintenant que j'ai compris (pas tout encore bien sûr) je peux expliquer plus sereinement, je peux vous aider à éviter ces expositions, je peux sensibiliser et montrer que des alternatives existent.
-                </p>
-
+                {/* Confidence personnelle */}
                 <div className="bg-orange-doux/10 rounded-2xl p-6 my-6 border-l-4 border-orange-doux">
-                  <p className="text-marron-terre font-medium mb-0">
-                    S'il y a bien quelque chose dont je suis sûre, c'est que <strong>tout est lié</strong> : la santé humaine, animale et environnementale sont liées et si l'un est pollué alors les autres le seront aussi.
+                  <p className="text-marron-terre mb-0 italic">
+                    <strong>Petite confidence :</strong> Mon engagement pour l'environnement ne date pas d'hier. Enfant, je me perdais dans les montagnes cantaliennes de mon village, où les vaches étaient plus nombreuses que les habitants. Aujourd'hui, c'est cette même connexion à la nature qui guide mon action.
                   </p>
                 </div>
 
-                <p className="text-xl text-center font-medium text-marron-terre">
-                  Vous souhaitez en savoir plus ?<br />
-                  <span className="text-vert-feuillage">Vous êtes au bon endroit.</span>
-                </p>
+                {/* Call to action */}
+                <div className="text-center py-4">
+                  <p className="text-lg font-medium text-marron-terre mb-3">
+                    Envie d'en savoir plus ou de passer à l'action ?
+                  </p>
+                  <a
+                    href="#contact"
+                    className="inline-block btn-primary"
+                  >
+                    Contactez-moi
+                  </a>
+                  <p className="text-sm text-marron-terre/60 mt-2">
+                    Pour échanger autour d'un café (ou d'un thé, pas de discrimination)
+                  </p>
+                  <p className="text-vert-feuillage font-medium mt-4">
+                    Agissons ensemble pour une santé durable, de vous à la planète.
+                  </p>
+                </div>
               </div>
 
               {/* Highlights */}
