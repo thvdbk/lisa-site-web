@@ -43,11 +43,26 @@ const colorClasses: Record<string, { bg: string; text: string; border: string }>
 }
 
 function parseInlineMarkdown(text: string): React.ReactNode {
-  // Parse **bold** within text
-  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  // Parse **bold** and [text](url) links within text
+  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g)
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>
+    }
+    // Match [text](url) links
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+    if (linkMatch) {
+      return (
+        <a
+          key={i}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-vert-feuillage hover:text-vert-eau underline"
+        >
+          {linkMatch[1]}
+        </a>
+      )
     }
     return part
   })
@@ -107,6 +122,17 @@ function parseMarkdown(text: string) {
                   }
                   return null
                 })}
+              </div>
+            )
+          }
+
+          // Titre suivi de texte normal (paragraphe)
+          const regularText = remainingLines.filter(line => line.trim() && !line.startsWith('- ') && !line.startsWith('**')).join(' ')
+          if (regularText) {
+            return (
+              <div key={i} className="mb-4">
+                <h4 className="font-semibold text-marron-terre mb-2">{title}</h4>
+                <p className="text-marron-terre/80">{parseInlineMarkdown(regularText)}</p>
               </div>
             )
           }

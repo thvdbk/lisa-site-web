@@ -11,13 +11,13 @@ const features = [
   },
   {
     icon: Heart,
-    title: 'Prévention santé',
+    title: 'Prévention primaire',
     description: 'En identifiant et réduisant les expositions aux polluants, nous pouvons prévenir de nombreuses pathologies liées à l\'environnement.',
   },
   {
     icon: Shield,
     title: 'Protection des plus vulnérables',
-    description: 'Femmes enceintes, bébés, enfants et personnes fragiles sont particulièrement sensibles aux polluants environnementaux.',
+    description: 'Pour qui ? Tout le monde est concerné mais certaines pollutions touchent les plus vulnérables : Femmes enceintes, bébés, enfants, adolescente et personnes fragiles sont particulièrement sensibles aux polluants environnementaux.',
   },
 ]
 
@@ -81,10 +81,21 @@ export default function SanteEnvironnementale() {
               <h3 className="font-serif text-2xl font-bold text-marron-terre mb-4">
                 Pourquoi agir maintenant ?
               </h3>
-              <p className="text-marron-terre/80 leading-relaxed mb-6">
-                Selon l'OMS, 23% des décès dans le monde sont liés à des facteurs environnementaux.
+              <p className="text-marron-terre/80 leading-relaxed mb-2">
+                Selon l'OMS (Organisation Mondiale de la Santé), 23% des décès dans le monde sont liés à des facteurs environnementaux.
                 La bonne nouvelle ? De nombreuses actions simples peuvent significativement réduire
                 notre exposition aux polluants et améliorer notre qualité de vie.
+              </p>
+              <p className="text-sm text-marron-terre/50 mb-6">
+                Source :{' '}
+                <a
+                  href="https://sante.gouv.fr/sante-et-environnement/les-plans-nationaux-sante-environnement/article/plan-national-sante-environnement-4-pnse-4-mon-environnement-ma-sante-2020-2024"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-vert-feuillage transition-colors"
+                >
+                  4ème Plan National Santé Environnement - santé.gouv.fr
+                </a>
               </p>
               <a
                 href="#ateliers"

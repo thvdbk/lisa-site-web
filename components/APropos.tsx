@@ -8,7 +8,7 @@ const highlights = [
   {
     icon: GraduationCap,
     title: 'Éco-Infirmière',
-    description: 'Expertise en santé environnementale et prévention primaire',
+    description: 'Formée à l\'IFSEN (Institut de Formation en Santé Environnemetale) en 2023',
   },
   {
     icon: Heart,
@@ -126,7 +126,7 @@ export default function APropos() {
                     <li className="flex gap-3">
                       <span className="text-vert-feuillage mt-1">•</span>
                       <span>
-                        <strong>Membre active de l'association AMLP</strong> (Alerte Médicale sur les Pesticides et les Perturbateurs Endocriniens) : je fais partie du groupe qui travaille sur les <strong>ordonnances vertes</strong>, pour intégrer la santé environnementale dans les pratiques médicales.
+                        <strong>Membre active de l'association AMLP</strong> (Alerte Médicale sur les Pesticides et les Perturbateurs Endocriniens) : je fais partie du groupe qui travaille sur les <strong>Ordonnances Vertes</strong>, pour intégrer la santé environnementale dans les pratiques médicales, faire le lien entre la santé et l’alimentation et agir dès les premiers instants de vie, auprès des femmes enceintes.  
                       </span>
                     </li>
                     <li className="flex gap-3">
@@ -191,7 +191,7 @@ export default function APropos() {
                 {/* Call to action */}
                 <div className="text-center py-4">
                   <p className="text-lg font-medium text-marron-terre mb-3">
-                    Envie d'en savoir plus ou de passer à l'action ?
+                    Vous voulez passer à l'action ?
                   </p>
                   <a
                     href="#contact"

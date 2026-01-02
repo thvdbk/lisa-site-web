@@ -120,7 +120,7 @@ function EventCard({ event, isPast }: { event: Evenement; isPast: boolean }) {
             {event.title}
           </h3>
 
-          <p className="text-marron-terre/70 text-sm mb-4 line-clamp-2">
+          <p className="text-marron-terre/70 text-sm mb-4 line-clamp-4">
             {event.description}
           </p>
 
