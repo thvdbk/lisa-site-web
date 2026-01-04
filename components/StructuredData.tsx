@@ -113,11 +113,11 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': 'https://www.eco-inf.fr/#business',
-    name: 'VieVent - Lisa Bonal Éco-Infirmière',
-    alternateName: ['Vie_Vent', 'VieVent'],
+    name: 'Vie_Vent - Lisa Bonal Éco-Infirmière',
+    alternateName: ['Vie_Vent', 'VieVent', 'Ateliers Lisa Bonal', 'Ateliers Santé Environnementale Toulouse'],
     image: 'https://www.eco-inf.fr/images/Vie_vent_3.png',
     logo: 'https://www.eco-inf.fr/images/Vie_vent_3.png',
-    description: 'Éco-infirmière à Toulouse proposant des ateliers Nesting, fresques santé environnementale et accompagnement pour un mode de vie plus sain.',
+    description: 'Lisa Bonal, éco-infirmière à Toulouse. Ateliers santé environnementale, Ateliers Nesting, Fresque Santé Environnementale et accompagnement en Occitanie, Haute-Garonne.',
     url: 'https://www.eco-inf.fr',
     telephone: SITE_CONFIG.contact.phoneLink,
     email: SITE_CONFIG.contact.email,
@@ -133,10 +133,20 @@ export default function StructuredData() {
       latitude: 43.6047,
       longitude: 1.4442,
     },
-    areaServed: {
-      '@type': 'State',
-      name: 'Occitanie',
-    },
+    areaServed: [
+      {
+        '@type': 'State',
+        name: 'Occitanie',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Haute-Garonne',
+      },
+      {
+        '@type': 'City',
+        name: 'Toulouse',
+      },
+    ],
     priceRange: '€€',
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
@@ -148,6 +158,36 @@ export default function StructuredData() {
       SITE_CONFIG.social.instagram,
       SITE_CONFIG.social.linkedin,
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Ateliers Santé Environnementale',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Atelier Nesting',
+            description: 'Atelier pour créer un environnement quotidien plus sain. Identification des sources de pollution intérieure et alternatives saines.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Fresque Santé Environnementale',
+            description: 'Atelier collaboratif en entreprise pour comprendre les liens entre environnement et santé.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Conférences et Interventions',
+            description: 'Sensibilisation à la santé environnementale pour tous publics : entreprises, écoles, collectivités.',
+          },
+        },
+      ],
+    },
   }
 
   return (
