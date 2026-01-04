@@ -5,6 +5,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
+import StructuredData from '@/components/StructuredData'
 import { SITE_CONFIG } from '@/lib/constants'
 
 const inter = Inter({
@@ -93,6 +94,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <StructuredData />
+      </head>
       <body className="font-sans antialiased">
         <Header />
         <main>{children}</main>
