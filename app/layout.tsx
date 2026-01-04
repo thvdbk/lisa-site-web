@@ -61,7 +61,7 @@ export const metadata: Metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'VieVent - Éco-Infirmière Santé Environnementale',
+        alt: 'Vie_Vent - Éco-Infirmière Santé Environnementale',
       },
     ],
   },

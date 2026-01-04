@@ -5,7 +5,7 @@ import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: `Politique de Confidentialité | ${SITE_CONFIG.brandName}`,
-  description: 'Politique de confidentialité et protection des données personnelles - VieVent',
+  description: 'Politique de confidentialité et protection des données personnelles - Vie_Vent',
 }
 
 export default function PolitiqueConfidentialitePage() {

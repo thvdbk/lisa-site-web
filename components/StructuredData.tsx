@@ -4,7 +4,7 @@ export default function StructuredData() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'VieVent',
+    name: 'Vie_Vent',
     alternateName: ['Vie_Vent', 'VieVent', 'vie_vent'],
     url: 'https://www.eco-inf.fr',
     logo: 'https://www.eco-inf.fr/images/Vie_vent_3.png',
@@ -57,15 +57,15 @@ export default function StructuredData() {
     givenName: 'Lisa',
     familyName: 'Bonal',
     jobTitle: 'Éco-Infirmière',
-    description: 'Lisa Bonal est éco-infirmière à Toulouse, fondatrice de Vie_Vent (VieVent). Spécialisée en santé environnementale, elle propose des ateliers Nesting, des fresques santé environnementale et des conférences sur les perturbateurs endocriniens en Occitanie.',
+    description: 'Lisa Bonal est éco-infirmière à Toulouse, fondatrice de Vie_Vent. Spécialisée en santé environnementale, elle propose des ateliers Nesting, des fresques santé environnementale et des conférences sur les perturbateurs endocriniens en Occitanie.',
     url: 'https://www.eco-inf.fr',
     image: 'https://www.eco-inf.fr/images/photo_lisa_vie_vent.jpg',
     email: SITE_CONFIG.contact.email,
     telephone: SITE_CONFIG.contact.phoneLink,
     worksFor: {
       '@type': 'Organization',
-      name: 'VieVent',
-      alternateName: 'Vie_Vent',
+      name: 'Vie_Vent',
+      alternateName: 'VieVent',
     },
     knowsAbout: [
       'Santé environnementale',
@@ -98,7 +98,7 @@ export default function StructuredData() {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'VieVent - Éco-Infirmière Santé Environnementale',
+    name: 'Vie_Vent - Éco-Infirmière Santé Environnementale',
     alternateName: ['Vie_Vent', 'VieVent', 'eco-inf.fr'],
     url: 'https://www.eco-inf.fr',
     description: 'Site officiel de Lisa Bonal, éco-infirmière à Toulouse. Ateliers Nesting, Fresque Santé Environnementale, conférences et accompagnement en santé environnementale.',

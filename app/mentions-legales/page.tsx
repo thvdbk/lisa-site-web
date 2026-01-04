@@ -5,7 +5,7 @@ import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: `Mentions Légales | ${SITE_CONFIG.brandName}`,
-  description: 'Mentions légales du site VieVent - Éco-Infirmière',
+  description: 'Mentions légales du site Vie_Vent - Éco-Infirmière',
 }
 
 export default function MentionsLegalesPage() {

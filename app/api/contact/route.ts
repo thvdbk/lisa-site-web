@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
           email: email,
           name: name,
         },
-        subject: `[Contact VieVent] ${subject}`,
+        subject: `[Contact Vie_Vent] ${subject}`,
         htmlContent: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #5E8C61;">Nouveau message de contact</h2>

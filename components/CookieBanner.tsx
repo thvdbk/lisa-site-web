@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
 
-const COOKIE_CONSENT_KEY = 'vievent-cookie-consent'
+const COOKIE_CONSENT_KEY = 'vie_vent-cookie-consent'
 
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)

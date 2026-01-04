@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
-  name: 'VieVent',
-  brandName: 'VieVent',
+  name: 'Vie_Vent',
+  brandName: 'Vie_Vent',
   ownerName: 'Lisa Bonal',
   title: 'Éco-Infirmière',
   description: 'Santé environnementale - Accompagnement pour un mode de vie plus sain',
