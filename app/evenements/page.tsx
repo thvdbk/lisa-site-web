@@ -107,6 +107,11 @@ function EventCard({ event, isPast }: { event: Evenement; isPast: boolean }) {
               <span className={`text-xs font-medium ${colors.text} ${colors.bg} px-2 py-1 rounded-full`}>
                 {atelier?.title || 'Événement'}
               </span>
+              {event.isFree && (
+                <span className="text-xs font-medium text-white bg-vert-feuillage px-2 py-1 rounded-full">
+                  Gratuit
+                </span>
+              )}
             </div>
             {!event.isPublic && (
               <span className="flex items-center gap-1 text-xs text-marron-terre/60 bg-marron-terre/10 px-2 py-1 rounded-full">

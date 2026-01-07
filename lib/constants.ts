@@ -11,7 +11,7 @@ export const SITE_CONFIG = {
     email: 'lisabonal@eco-inf.fr',
   },
   social: {
-    instagram: 'https://www.instagram.com/lisa_infirmierengagee',
+    instagram: 'https://www.instagram.com/vie_vent_lisa?igsh=MXI5NWZ0anp0Y2ZsZg%3D%3D&utm_source=qr',
     linkedin: 'https://www.linkedin.com/in/lisa-bonal',
   },
   domain: 'eco-inf.fr',
@@ -46,16 +46,18 @@ export const ATELIERS = [
     title: 'Ateliers Nesting',
     subtitle: 'Pour un habitat plus sain',
     description: 'Accompagnement personnalisé pour créer un environnement quotidien plus sain. Identifiez les sources de pollution intérieure et adoptez des alternatives saines pour votre santé.',
-    longDescription: `Les ateliers Nesting vous accompagnent dans la création d'un environnement quotidien plus sain pour vous et votre famille.
+    longDescription: `Les ateliers Nesting vous accompagnent dans la création d'un environnement quotidien plus sain pour vous et votre famille. Conçus par WECF, les ateliers Nesting ont été créés pour répondre aux attentes des parents et des professionnel·les de la santé et de la petite enfance, qui veulent être mieux informé·es sur les risques liés à la pollution intérieure.
 
 **Ce que nous abordons :**
 - Identification des sources de pollution intérieure (produits ménagers, cosmétiques, matériaux...)
 - Alternatives saines et accessibles pour le quotidien
 - Lecture et compréhension des étiquettes
-- Conseils personnalisés selon votre situation (accueil d’un nouveau né etc.)
+- Conseils personnalisés selon votre situation (accueil d'un nouveau né etc.)
 
 **Format :** Atelier en petit groupe (2h)
-**Public :** Tout public, futurs parents`,
+**Public :** Tout public, futurs parents
+
+[En savoir plus sur le projet Nesting (WECF)](https://wecf-france.org/sante-environnement/decouvrir-le-projet-nesting/)`,
     icon: 'Home',
     color: 'vert-feuillage',
     images: ['/images/ateliers/atelier-nesting-sante-environnementale.jpg', '/images/ateliers/atelier-nesting-sante-environnementale-2.jpeg'],
@@ -185,6 +187,7 @@ export type Evenement = {
   contact?: string // Contact personne / entité organisatrice (téléphone, email)
   replayLink?: string // Lien vers le replay pour les événements passés
   isPublic: boolean // true si ouvert au public, false si privé
+  isFree?: boolean // true si l'événement est gratuit
 }
 
 export const EVENEMENTS: Evenement[] = [
@@ -200,6 +203,7 @@ export const EVENEMENTS: Evenement[] = [
     description: 'Dans le cadre du 4ème Plan Régional Santé Environnementale porté par le Contrat Local de Santé du SICOVAL, venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
     contact: 'Inscription par téléphone : 05.61.73.53.10',
     isPublic: true,
+    isFree: true,
   },
   {
     id: 'nesting-pechabou-jan-2026',
@@ -213,6 +217,7 @@ export const EVENEMENTS: Evenement[] = [
     description: 'Dans le cadre du 4ème Plan Régional Santé Environnementale porté par le Contrat Local de Santé du SICOVAL, venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
     contact: 'Inscription auprès du CCAS de Pechabou (tel: 06.70.59.67.31 ou par mail : ccas@mairie-pechabou.fr)',
     isPublic: true,
+    isFree: true,
   },
   {
     id: 'nesting-lacroix-falgarde-jan-2026',
@@ -226,6 +231,7 @@ export const EVENEMENTS: Evenement[] = [
     description: 'Dans le cadre du 4ème Plan Régional Santé Environnementale porté par le Contrat Local de Santé du SICOVAL, venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
     contact: 'Inscription par téléphone : 05.62.14.07.25',
     isPublic: true,
+    isFree: true,
   },
   {
     id: 'nesting-cugnaux-jan-2026',
@@ -239,6 +245,7 @@ export const EVENEMENTS: Evenement[] = [
     description: 'Venez repérer les polluants de la maison et comprendre leurs impacts sur notre santé. Nous verrons comment limiter les expositions et trouver des alternatives saines. Places limitées à 15 participants.',
     contact: 'Inscription auprès du CCAS de Cugnaux (tel: 06.26.29.25.98)',
     isPublic: true,
+    isFree: true,
   },
   {
     id: 'webinaire-decembre-2025',
@@ -318,7 +325,7 @@ export const EVENEMENTS: Evenement[] = [
     startTime: '20:00',
     endTime: '22:00',
     location: 'Cinéma Utopia Tournefeuille',
-    replayLink: '[https://www.francebleu.fr/emissions/l-invite-qui-fait-du-bien?pageCursor=MTM2](https://www.francebleu.fr/emissions/l-invite-qui-fait-du-bien?pageCursor=MTM2)',
+    replayLink: 'https://www.francebleu.fr/emissions/l-invite-qui-fait-du-bien?pageCursor=MTM2',
     address: 'Impasse du Chateau, 31170 Tournefeuille',
     description: 'Projection du film "Contrepoisons, un combat citoyen", en présence des réalisateursn de Laurence Huc, Toxicologue, Directrice de recherche INRAE/ INSERM / IRSET / LISIS & Professionnels de Santé',
     isPublic: true,
